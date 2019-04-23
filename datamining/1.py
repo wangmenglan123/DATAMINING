@@ -11,15 +11,15 @@ def visual(i,data):
     plt.hist(data, bins=4)
     plt.xlabel(i)
     plt.ylabel('value')
-    plt.title(u'Ö±·½Í¼', FontProperties=font)
+    plt.title(u'ç›´æ–¹å›¾', FontProperties=font)
     plt.show()
     stats.probplot(data, dist="norm", plot=plt)
     plt.xlabel(i)
-    plt.title(u'qqÍ¼', FontProperties=font)
+    plt.title(u'qqå›¾', FontProperties=font)
     plt.show()
     plt.boxplot(data)
     plt.xlabel(i)
-    plt.title(u'ºĞÍ¼', FontProperties=font)
+    plt.title(u'ç›’å›¾', FontProperties=font)
     plt.show()
 for i in df_train.columns[1:-1]:
     if i in x_numeric:
@@ -39,13 +39,13 @@ df_train1=df_train.dropna(axis=0,subset = [ "price"])
 df_train_new.append(df_train1)
 dict={}
 key=0
-ff_name=["½«È±Ê§²¿·ÖÌŞ³ı","ÓÃ×î¸ßÆµÂÊÖµÀ´Ìî²¹È±Ê§Öµ","Í¨¹ıÊı¾İ¶ÔÏóÖ®¼äµÄÏàËÆĞÔÀ´Ìî²¹È±Ê§Öµ","Í¨¹ıÊôĞÔµÄÏà¹Ø¹ØÏµÀ´Ìî²¹È±Ê§Öµ"]
+ff_name=["å°†ç¼ºå¤±éƒ¨åˆ†å‰”é™¤","ç”¨æœ€é«˜é¢‘ç‡å€¼æ¥å¡«è¡¥ç¼ºå¤±å€¼","é€šè¿‡æ•°æ®å¯¹è±¡ä¹‹é—´çš„ç›¸ä¼¼æ€§æ¥å¡«è¡¥ç¼ºå¤±å€¼","é€šè¿‡å±æ€§çš„ç›¸å…³å…³ç³»æ¥å¡«è¡¥ç¼ºå¤±å€¼"]
 for i in df_train.columns[1:-1]:
     dict[i]=df_train[i].value_counts().index[0]
 df_train2=df_train.fillna(dict)
 df_train_new.append(df_train2)
 def set_missing(df):
-    # °ÑÒÑÓĞµÄÊıÖµĞÍÌØÕ÷È¡³öÀ´¶ª½øRandom Forest RegressorÖĞ
+    # æŠŠå·²æœ‰çš„æ•°å€¼å‹ç‰¹å¾å–å‡ºæ¥ä¸¢è¿›Random Forest Regressorä¸­
     _df = df[['price', 'points']]
     known_ = _df[_df['price'].notnull()].as_matrix()
 
@@ -53,11 +53,11 @@ def set_missing(df):
 
     y = known_[:, 0]
 
-    # X¼´ÌØÕ÷ÊôĞÔÖµ
+    # Xå³ç‰¹å¾å±æ€§å€¼
 
     X = known_[:, 1::]
 
-    # fitµ½RandomForestRegressorÖ®ÖĞ
+    # fitåˆ°RandomForestRegressorä¹‹ä¸­
 
     rfr = RandomForestRegressor(random_state=0, n_estimators=2000, n_jobs=-1)
 
